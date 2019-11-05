@@ -3,7 +3,7 @@ import AWS from "aws-sdk";
 
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
-
+/////////I will test something
 export function main(event, context, callback) {
   // Request body is passed in as a JSON encoded string in 'event.body'
   const data = JSON.parse(event.body);
@@ -40,7 +40,7 @@ export function main(event, context, callback) {
       const response = {
         statusCode: 500,
         headers: headers,
-        body: JSON.stringify({ status: false })
+        body: JSON.stringify({ status: false, error: error })
       };
       callback(null, response);
       return;
