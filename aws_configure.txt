@@ -1,0 +1,8 @@
+AKIAY7BKDA6WGRPOF65G
+atWTbOUBRir00mc2XlGs8qBvO3MVD86BFnzMjNHv
+
+
+ AmazonDynamoDBFullAccess
+AWS 관리형 정책
+
+ AmazonDynamoDBFullAccesswithDataPipeline
