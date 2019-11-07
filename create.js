@@ -7,7 +7,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 export function main(event, context, callback) {
   // Request body is passed in as a JSON encoded string in 'event.body'
   const data = JSON.parse(event.body);
-
+  console.log('something', event.requestContext.identity.cognitoIdentityId);
   const params = {
     TableName: process.env.tableName,
     // 'Item' contains the attributes of the item to be created
@@ -18,6 +18,8 @@ export function main(event, context, callback) {
     // - 'content': parsed from request body
     // - 'attachment': parsed from request body
     // - 'createdAt': current Unix timestamp
+
+    //This item's keys should be spell correctly. I miss up the 'userId' key like 'userid' when creating notes table on dynamodb.
     Item: {
       userId: event.requestContext.identity.cognitoIdentityId,
       noteId: uuid.v1(),
