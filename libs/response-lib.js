@@ -1,10 +1,6 @@
-export function success(body) {
-    return buildResponse(200, body);
-  }
-  export function failure(body) {
-    return buildResponse(500, body);
-  }
-  function buildResponse(statusCode, body) {
+export const success = body => buildResponse(200, body);
+export const  failure = body =>  buildResponse(500, body);
+function buildResponse(statusCode, body) {
     return {
       statusCode: statusCode,
       headers: {

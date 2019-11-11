@@ -36,8 +36,16 @@ functions:
     handler: create.main
     events:
       - http:
-          path: notes
+          path: notes/{id}
           method: post
+          cors: true
+          authorizer: min2
+  get:
+    handler: get.main
+    events:
+      - http:
+          path: notes/{id}
+          method: get
           cors: true
           authorizer: min2
 
