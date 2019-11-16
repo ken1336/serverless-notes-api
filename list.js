@@ -15,8 +15,7 @@ export async function main(event, context) {
       ":userId": event.requestContext.identity.cognitoIdentityId
     }
   };
-  await dynamoDbLib.call("query", params)
+  return await dynamoDbLib.call("query", params)
   .then(result => result.Items? success(result.Items) : failure({ status: false, error: "Item not found." }))
   .catch(e => failure({ status: false }));
-  
 }
