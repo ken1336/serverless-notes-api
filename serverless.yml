@@ -49,7 +49,7 @@ functions:
     handler: create.main
     events:
       - http:
-          path: notes/{id}
+          path: notes/
           method: post
           cors: true
           authorizer: min2
