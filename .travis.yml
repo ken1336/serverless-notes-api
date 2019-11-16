@@ -7,4 +7,3 @@ cache:
 script: 
     - npm install -g serverless
     - serverless deploy
-    - sls deploy

@@ -13,10 +13,8 @@ export async function main(event, context) {
     }
   };
 
-  try {
-    await dynamoDbLib.call("delete", params);
-    return success({ status: true });
-  } catch (e) {
-    return failure({ status: false });
-  }
+  const result = await dynamoDbLib.call("delete",params)
+  .then(v => success({ status: true}))
+  .catch(e => failure({ status: false }));
+  console.log(result);
 }
