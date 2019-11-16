@@ -1,5 +1,5 @@
 # NOTE: update this with your service name
-service: notes-app-api
+service: notes-app-api-test
 
 # Create an optimized package for our functions 
 package:
@@ -25,8 +25,21 @@ provider:
   environment:
     tableName: notes
 
+iamRoleStatements:
+ - Effect: Allow
+   Action:
+     - dynamodb:DescribeTable
+     - dynamodb:Query
+     - dynamodb:Scan
+     - dynamodb:GetItem
+     - dynamodb:PutItem
+     - dynamodb:UpdateItem
+     - dynamodb:DeleteItem
+   Resource: "arn:aws:dynamodb:ap-northeast-2:*:*"
+
+
 functions:
-  hello:
+  min2:
     handler: handler.hello
     events:
       - http:
@@ -80,22 +93,8 @@ functions:
           path: notes/{id}
           method: delete
           cors: true
-          authorizer: aws_iam
+          authorizer: min2
 
-
-iamRoleStatements:
- - Effect: Allow
-   Action:
-     - dynamodb:DescribeTable
-     - dynamodb:Query
-     - dynamodb:Scan
-     - dynamodb:GetItem
-     - dynamodb:PutItem
-     - dynamodb:UpdateItem
-     - dynamodb:DeleteItem
-   Resource: "arn:aws:dynamodb:ap-northeast-2:*:*"
-
-   
 # Create our resources with separate CloudFormation templates
 resources:
   # API Gateway Errors
