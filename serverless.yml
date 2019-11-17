@@ -25,26 +25,20 @@ provider:
   environment:
     tableName: notes
 
-iamRoleStatements:
- - Effect: Allow
-   Action:
-     - dynamodb:DescribeTable
-     - dynamodb:Query
-     - dynamodb:Scan
-     - dynamodb:GetItem
-     - dynamodb:PutItem
-     - dynamodb:UpdateItem
-     - dynamodb:DeleteItem
-   Resource: "arn:aws:dynamodb:ap-northeast-2:*:*"
+  iamRoleStatements:
+   - Effect: Allow
+     Action:
+       - dynamodb:DescribeTable
+       - dynamodb:Query
+       - dynamodb:Scan
+       - dynamodb:GetItem
+       - dynamodb:PutItem
+       - dynamodb:UpdateItem
+       - dynamodb:DeleteItem
+     Resource: "arn:aws:dynamodb:ap-northeast-2:*:*"
 
 
 functions:
-  min2:
-    handler: handler.hello
-    events:
-      - http:
-          path: hello
-          method: get
   create:
     handler: create.main
     events:
@@ -52,7 +46,7 @@ functions:
           path: notes/
           method: post
           cors: true
-          authorizer: min2
+          authorizer: aws_iam
   get:
     handler: get.main
     events:
@@ -60,7 +54,7 @@ functions:
           path: notes/{id}
           method: get
           cors: true
-          authorizer: min2
+          authorizer: aws_iam
   list:
     # Defines an HTTP API endpoint that calls the main function in list.js
     # - path: url path is /notes
@@ -71,7 +65,7 @@ functions:
           path: notes
           method: get
           cors: true
-          authorizer: min2
+          authorizer: aws_iam
   update:
     # Defines an HTTP API endpoint that calls the main function in update.js
     # - path: url path is /notes/{id}
@@ -82,7 +76,7 @@ functions:
           path: notes/{id}
           method: put
           cors: true
-          authorizer: min2
+          authorizer: aws_iam
   delete:
     # Defines an HTTP API endpoint that calls the main function in delete.js
     # - path: url path is /notes/{id}
@@ -93,7 +87,7 @@ functions:
           path: notes/{id}
           method: delete
           cors: true
-          authorizer: min2
+          authorizer: aws_iam
 
 # Create our resources with separate CloudFormation templates
 resources:
