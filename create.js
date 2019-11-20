@@ -14,12 +14,6 @@ export async function main(event, context) {
       createdAt: Date.now()
     }
   };
-  try {
-    await dynamoDbLib.call("put", params);
-    return success(params.Item);
-  } catch (e) {
-    console.log('test');
-    console.log(e);
-    return failure({ status: e });
-  }
+  const result =  await dynamoDbLib.call("put",params).then(v => success(params.Items)).catch(e => failure({status:e}));
+  return result;
 }
