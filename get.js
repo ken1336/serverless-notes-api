@@ -15,5 +15,5 @@ export async function main(event, context) {
   const result = await dynamoDbLib.call("get", params)
   .then(result => result.Item? success(result.Item) : failure({ status: false, error: "Item not found." }))
   .catch(e => failure({ status: false }));
-  console.log(result);
+  return result;
 }
