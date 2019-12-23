@@ -3,6 +3,10 @@ logs
 *.log
 npm-debug.log*
 
+
+#Terraform
+Terraform/
+
 # Runtime data
 pids
 *.pid
