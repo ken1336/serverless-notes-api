@@ -8,12 +8,13 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
+      - name: 'Find directory'
+        run: 'cd Terraform'
       - name: 'Terraform Format'
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: 0.12.18
           tf_actions_subcommand: 'fmt'
-          working-directory: /Terraform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Init'
@@ -21,7 +22,6 @@ jobs:
         with:
           tf_actions_version: 0.12.18
           tf_actions_subcommand: 'init'
-          working-directory: /Terraform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Validate'
@@ -29,7 +29,6 @@ jobs:
         with:
           tf_actions_version: 0.12.18
           tf_actions_subcommand: 'validate'
-          working-directory: /Terraform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Plan'
@@ -37,7 +36,6 @@ jobs:
         with:
           tf_actions_version: 0.12.18
           tf_actions_subcommand: 'plan'
-          working-directory: /Terraform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform apply'
@@ -45,6 +43,5 @@ jobs:
         with:
           tf_actions_version: 0.12.18
           tf_actions_subcommand: 'apply'
-          working-directory: /Terraform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
