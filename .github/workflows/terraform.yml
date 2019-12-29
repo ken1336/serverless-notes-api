@@ -22,6 +22,7 @@ jobs:
         with:
           tf_actions_version: 0.12.18
           tf_actions_subcommand: 'init'
+          -target: Terraform/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Validate'
@@ -29,6 +30,7 @@ jobs:
         with:
           tf_actions_version: 0.12.18
           tf_actions_subcommand: 'validate'
+          -target: Terraform/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Plan'
@@ -36,6 +38,7 @@ jobs:
         with:
           tf_actions_version: 0.12.18
           tf_actions_subcommand: 'plan'
+          -target: Terraform/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform apply'
@@ -43,5 +46,6 @@ jobs:
         with:
           tf_actions_version: 0.12.18
           tf_actions_subcommand: 'apply'
+          -target: Terraform/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
