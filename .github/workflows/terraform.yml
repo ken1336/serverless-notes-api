@@ -9,7 +9,7 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@master
       - name: 'Find directory'
-        run: 'cd Terraform'
+        run: cd Terraform
       - name: 'Terraform Format'
         uses: hashicorp/terraform-github-actions@master
         with:
