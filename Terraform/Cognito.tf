@@ -1,6 +1,6 @@
 resource "aws_cognito_user_pool" "pool" {
   name = "mypool"
-  auto_verified_attributes = ["email"]
+  auto_verified_attributes = "email"
 }
 resource "aws_cognito_identity_provider" "pool_provider" {
   user_pool_id  = "${aws_cognito_user_pool.pool.id}"
