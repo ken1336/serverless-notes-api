@@ -1,9 +1,10 @@
-resource "aws_cognito_user_pool" "pool" {
-  name = "mypool"
-  auto_verified_attributes = "email"
+resource "aws_cognito_user_pool" "example" {
+  name                     = "example-pool"
+  auto_verified_attributes = ["email"]
 }
-resource "aws_cognito_identity_provider" "pool_provider" {
-  user_pool_id  = "${aws_cognito_user_pool.pool.id}"
+
+resource "aws_cognito_identity_provider" "example_provider" {
+  user_pool_id  = "${aws_cognito_user_pool.example.id}"
   provider_name = "Google"
   provider_type = "Google"
 
@@ -21,5 +22,5 @@ resource "aws_cognito_identity_provider" "pool_provider" {
 resource "aws_cognito_user_pool_client" "client" {
   name = "client"
 
-  user_pool_id = "${aws_cognito_user_pool.pool.id}"
+  user_pool_id = "${aws_cognito_user_pool.example.id}"
 }
