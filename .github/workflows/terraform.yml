@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@master
+        uses: actions/checkout@TestBranch
       - name: 'Terraform Format'
         uses: hashicorp/terraform-github-actions@master
         with:
